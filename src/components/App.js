@@ -16,7 +16,6 @@ export class App extends Component {
     error: false,
     loading: false,
     totalImages: 0,
-    buttonLoadMore: true,
   };
   async componentDidUpdate(prevProps, prevState) {
     const { query, page, totalImages, images } = this.state;
@@ -49,7 +48,7 @@ export class App extends Component {
         this.setState({ loading: false });
       }
     }
-    if (totalImages && totalImages === images.hits) {
+    if (totalImages && totalImages === images.length) {
       toast.success('You have reached the end of the list of images found');
     }
   }
