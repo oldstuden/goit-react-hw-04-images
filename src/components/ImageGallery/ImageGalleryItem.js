@@ -28,27 +28,25 @@ export class ImageGalleryItem extends Component {
   };
 
   render() {
-    const { webformatURL, largeImageURL, tags, id } = this.props;
+    const { webformatURL, largeImageURL, tags } = this.props;
 
     return (
-      <div>
-        <ImageItem
-          key={id}
-          id={id}
-          className="gallery-item"
-          onClick={this.openModal}
-        >
-          <ImageGalleryItemImage src={webformatURL} alt={tags} />
+      <>
+        <ImageItem className="gallery-item">
+          <ImageGalleryItemImage
+            src={webformatURL}
+            alt={tags}
+            onClick={this.openModal}
+          />
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+          >
+            <img src={largeImageURL} alt={tags} width={600} height={400} />
+          </Modal>
         </ImageItem>
-
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-        >
-          <img src={largeImageURL} alt={tags} width={600} height={400} />
-        </Modal>
-      </div>
+      </>
     );
   }
 }
