@@ -49,6 +49,11 @@ export const App = () => {
     getImages();
   }, [query, page]);
 
+  useEffect(() => {
+    if (!error) return;
+    alert('something went wrong');
+  }, [error]);
+
   const handleSubmit = query => {
     setQuery(query);
     setImages([]);
